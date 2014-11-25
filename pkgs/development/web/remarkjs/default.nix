@@ -5,8 +5,8 @@ with lib;
 let
 
   # highlight.js is a git submodule of remark
-  highlightjs = fetchgit {
-    url = https://github.com/isagalaev/highlight.js;
+  druntime = fetchgit {
+    url = "https://github.com/ldc-developers/druntime.git";
     rev = "10b9500b67983f0a9c42d8ce8bf8e8c469f7078c";
     sha256 = "1yy8by15kfklw8lwh17z1swpj067q0skjjih12yawbryraig41m0";
   };
@@ -19,6 +19,7 @@ in stdenv.mkDerivation rec {
   src = fetchurl {
     url = "https://github.com/gnab/remark/archive/v${version}.tar.gz";
     sha256 = "1a2il6aa0g9cnig56ykmq8lr626pbxlsllk6js41h6gcn214rw60";
+    fetchSubmodules = true;
   };
 
   buildInputs = with nodePackages; [
