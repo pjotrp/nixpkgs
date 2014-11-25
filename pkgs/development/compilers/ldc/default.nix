@@ -17,6 +17,12 @@ stdenv.mkDerivation rec {
       fetchSubmodules = true;
   };
 
+  phobos = fetchgit {
+      url = "https://github.com/ldc-developers/phobos.git";
+      rev = "74c67cde09129bd38ba9c278f8810204e813a7dd";
+      sha256 = "1di44z4d6lfy32d7li4wjbs1ipk7jv0ig2wdxclj701n2j1px1an";
+  };
+
   druntime = fetchgit {
     url = https://github.com/ldc-developers/druntime.git;
     rev = "4a3b3f447234c3febe112aa3629627daf658be38";
@@ -28,6 +34,8 @@ stdenv.mkDerivation rec {
   postPatch = ''
     rm -rf runtime/druntime
     ln -s $druntime runtime/druntime
+    rm -rf runtime/phobos
+    ln -s $phobos runtime/phobus
   '';
 
   # dontStrip = true;
