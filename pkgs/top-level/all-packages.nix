@@ -3455,6 +3455,11 @@ let
   };
   julia = julia032;
 
+  ldc = callPackage ../development/compilers/ldc/default.nix {
+    llvm = llvm_33;
+  };
+
+
   lazarus = callPackage ../development/compilers/fpc/lazarus.nix {
     fpc = fpc;
   };
