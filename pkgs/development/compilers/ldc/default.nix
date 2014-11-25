@@ -25,13 +25,6 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ libconfig openssl llvm cmake cacert ] ;
 
-  # prePatch = ''
-  # '';
-
-  # configurePhase = ''
-  #
-  # '';
-
   postPatch = ''
     rm -rf runtime/druntime
     ln -s $druntime runtime/druntime
@@ -41,11 +34,11 @@ stdenv.mkDerivation rec {
   # enableParallelBuilding = true;
 
   meta = {
-    description = "High-level performance-oriented dynamical language for technical computing";
-    homepage = "http://julialang.org/";
+    description = "The LLVM-based D compiler";
+    homepage = "https://github.com/ldc-developers/ldc";
     license = stdenv.lib.licenses.mit;
     # maintainers = [ stdenv.lib.maintainers. ];
     platforms = with stdenv.lib.platforms; linux;
-    broken = false;
+    broken = true;
   };
 }
